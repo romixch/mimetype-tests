@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
  */
 public class ServiceImpl implements Service {
 
-    public Response getResource() {
-        return Response.ok("hello mimetype").build();
+    public Response getResource(String acceptHeader) {
+        return Response.ok("produce " + acceptHeader).type(acceptHeader).build();
     }
 }
