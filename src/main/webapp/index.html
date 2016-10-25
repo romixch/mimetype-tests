@@ -13,7 +13,7 @@
                 window.navigator.msSaveOrOpenBlob(blob, 'sample.' + fileExtension);
             } else {
                 var fileURL = window.URL.createObjectURL(blob);
-                window.open(fileURL);
+                window.open(fileURL, "_self");
             }
         });
     }
