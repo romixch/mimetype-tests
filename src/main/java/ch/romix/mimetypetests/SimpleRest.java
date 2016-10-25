@@ -6,12 +6,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+@Path("/simple")
 public class SimpleRest {
 
     @GET
-    @Path("/simple")
+    @Produces("text/plain")
     public Response getResource(@HeaderParam("user-agent") String acceptHeader) {
-        return Response.ok("Hello world!", "text/plain").build();
+        return Response.ok("The simple resource seams to work", "text/plain").build();
     }
 
 }
