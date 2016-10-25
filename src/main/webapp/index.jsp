@@ -1,7 +1,8 @@
 <html>
 <body>
 <script>
-    function getFile(type) {
+    function getFile(fileExtension, type) {
+        if(!fileExtension) fileExtension = 'pdf';
         if(!type) type = 'pdf';
 
         performGetRequest('application/resourcename-v1+' + type, function(result) {
@@ -9,10 +10,10 @@
 
             var isIE = /*@cc_on!@*/false || !!document.documentMode;
             if (isIE) {
-                window.navigator.msSaveOrOpenBlob(blob, 'sample.' + type);
+                window.navigator.msSaveOrOpenBlob(blob, 'sample.' + fileExtension);
             } else {
                 var fileURL = window.URL.createObjectURL(blob);
-                window.open(fileURL, '_blank');
+                window.open(fileURL);
             }
         });
     }
@@ -37,9 +38,17 @@
 <h1>Hello Mimetype Junkie!</h1>
 <p>What would you like to do?</p>
 <p>
-    <a href="#" onclick="getFile('pdf')">Get resource as pdf</a><br>
-    <a href="#" onclick="getFile('xls')">Get resource as xls</a><br>
-    <a href="#" onclick="getFile('csv')">Get resource as csv</a><br>
+    Using special mime types:<br>
+    <a href="#" onclick="getFile('pdf', 'pdf')">Get resource as pdf</a><br>
+    <a href="#" onclick="getFile('xls', 'msexcel')">Get resource as xls</a><br>
+    <a href="#" onclick="getFile('csv', 'csv')">Get resource as csv</a><br>
+</p>
+
+<p>
+    Using official mime types:<br>
+    <a href="/rest/simple/pdf">Get pdf</a><br>
+    <a href="/rest/simple/xls">Get xls</a><br>
+    <a href="/rest/simple/csv">Get csv</a><br>
 </p>
 </body>
 </html>
