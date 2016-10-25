@@ -17,7 +17,7 @@ public class SimpleRest {
     public Response getPdf() {
         URL resource = Thread.currentThread().getContextClassLoader().getResource("sample.pdf");
         StreamingOutput output = new MyStreamingOutput(resource);
-        return Response.ok(output).type("application/pdf").build();
+        return Response.ok(output).type("application/pdf").header("Content-Disposition", "inline; filename=\"sample.pdf\"").build();
     }
 
     @GET
@@ -26,7 +26,7 @@ public class SimpleRest {
     public Response getXls() {
         URL resource = Thread.currentThread().getContextClassLoader().getResource("sample.xls");
         StreamingOutput output = new MyStreamingOutput(resource);
-        return Response.ok(output).type("application/msexcel").build();
+        return Response.ok(output).type("application/msexcel").header("Content-Disposition", "inline; filename=\"sample.xls\"").build();
     }
 
     @GET
@@ -35,7 +35,7 @@ public class SimpleRest {
     public Response getCsv() {
         URL resource = Thread.currentThread().getContextClassLoader().getResource("sample.csv");
         StreamingOutput output = new MyStreamingOutput(resource);
-        return Response.ok(output).type("application/csv").build();
+        return Response.ok(output).type("application/csv").header("Content-Disposition", "inline; filename=\"sample.csv\"").build();
     }
 
 }
