@@ -9,7 +9,7 @@
 
             var isIE = /*@cc_on!@*/false || !!document.documentMode;
             if (isIE) {
-                window.navigator.msSaveOrOpenBlob(blob, 'schadenfall.' + type);
+                window.navigator.msSaveOrOpenBlob(blob, 'sample.' + type);
             } else {
                 var fileURL = window.URL.createObjectURL(blob);
                 window.open(fileURL, '_blank');
