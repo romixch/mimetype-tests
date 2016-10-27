@@ -1,12 +1,12 @@
 <html>
 <body>
 <script>
-    function getFile(fileExtension, type) {
+    function getFile(fileExtension, type, mimeType) {
         if(!fileExtension) fileExtension = 'pdf';
         if(!type) type = 'pdf';
 
         performGetRequest('application/resourcename-v1+' + type, function(result) {
-            var blob = new window.Blob([result.response], {type: 'application/' + type});
+            var blob = new window.Blob([result.response], {type: mimeType});
 
             var isIE = /*@cc_on!@*/false || !!document.documentMode;
             if (isIE) {
@@ -39,9 +39,9 @@
 <p>What would you like to do?</p>
 <p>
     Using special mime types. These downloads are triggered using javascript blobs to set the correct mime type in the browser:<br>
-    <a href="#" onclick="getFile('pdf', 'pdf')">Get resource as pdf</a><br>
-    <a href="#" onclick="getFile('xls', 'msexcel')">Get resource as xls</a><br>
-    <a href="#" onclick="getFile('csv', 'csv')">Get resource as csv</a><br>
+    <a href="#" onclick="getFile('pdf', 'pdf', 'application/pdf')">Get resource as pdf</a><br>
+    <a href="#" onclick="getFile('xls', 'msexcel', 'application/msexcel')">Get resource as xls</a><br>
+    <a href="#" onclick="getFile('csv', 'csv', 'text/csv')">Get resource as csv</a><br>
 </p>
 
 <p>

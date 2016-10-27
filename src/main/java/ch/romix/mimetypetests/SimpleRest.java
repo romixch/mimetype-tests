@@ -31,11 +31,11 @@ public class SimpleRest {
 
     @GET
     @Path("/csv")
-    @Produces({"application/csv" })
+    @Produces({"text/csv" })
     public Response getCsv() {
         URL resource = Thread.currentThread().getContextClassLoader().getResource("sample.csv");
         StreamingOutput output = new MyStreamingOutput(resource);
-        return Response.ok(output).type("application/csv").header("Content-Disposition", "inline; filename=\"sample.csv\"").build();
+        return Response.ok(output).type("text/csv").header("Content-Disposition", "inline; filename=\"sample.csv\"").build();
     }
 
 }
