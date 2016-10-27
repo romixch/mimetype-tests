@@ -37,30 +37,39 @@
 </script>
 <h1>Hello Mimetype Junkie!</h1>
 <p>What would you like to do?</p>
+
+<h2>Using versioned mimetypes</h2>
+<p>Use one URL for all mimetypes. Encode version in mimetype</p>
 <p>
-    Using special mime types. These downloads are triggered using javascript blobs to set the correct mime type in the browser:<br>
+    These downloads are triggered using javascript blobs to set the correct mime type in the browser:<br>
     <a href="#" onclick="getFile('pdf', 'pdf', 'application/pdf')">Get resource as pdf</a><br>
     <a href="#" onclick="getFile('xls', 'msexcel', 'application/msexcel')">Get resource as xls</a><br>
     <a href="#" onclick="getFile('csv', 'csv', 'text/csv')">Get resource as csv</a><br>
 </p>
 
 <p>
-    Using official mime types:<br>
+    Using mimetype in anchor element &lt;a href=... type=&quot;application/pdf&quot; ...<br>
+    <a href="/rest/resourcename" type="application/pdf">application/pdf</a><br>
+    <a href="/rest/resourcename" type="application/msexcel">application/msexcel</a><br>
+    <a href="/rest/resourcename" type="text/csv">text/csv</a><br>
+    <a href="/rest/resourcename" type="application/resourcename-v1+pdf">application/resourcename-v1+pdf</a><br>
+    <a href="/rest/resourcename" type="application/resourcename-v1+msexcel">application/resourcename-v1+msexcel</a><br>
+    <a href="/rest/resourcename" type="application/resourcename-v1+csv">application/resourcename-v1+csv</a><br>
+    Those links don't work because type is just a hint for the browser for what it should do with the content once it is obtained.
+</p>
+
+<p>
+    Using plain text link to our versioned rest URL<br>
+    <a href="/rest/resourcename">get whatever</a>
+</p>
+
+<h2>Using official mimetypes</h2>
+
+<p>
+    <br>
     <a href="/rest/simple/pdf">Get pdf</a><br>
     <a href="/rest/simple/xls">Get xls</a><br>
     <a href="/rest/simple/csv">Get csv</a><br>
-</p>
-
-<p>
-    Using mimetype in anchor element<br>
-    <a href="/rest/resourcename" type="application/pdf">get pdf</a>
-    <a href="/rest/resourcename" type="application/msexcel">get xls</a>
-    <a href="/rest/resourcename" type="text/csv">get csv</a>
-</p>
-
-<p>
-    Using plain text link to our versioned rest URLs<br>
-    <a href="/rest/resourcename">get whatever</a>
 </p>
 </body>
 </html>
